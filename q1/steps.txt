@@ -30,6 +30,20 @@ UPLOAD AN IMAGE TO GCR
 	docker push asia.gcr.io/pe-training/shriram-q1-a1:latest
 4. Now this image can be pulled and run as follows :
 	docker run -dit -p 8080:80 asia.gcr.io/pe-training/shriram-q1-a1:latest
+	
+UPLOAD AN IMAGE TO ECR (Using EC2 instance)
+1. Create an EC2 instance with full access IAM role
+2. Create a repo in ECR to upload the images to
+3. SSH into the EC2 instance and install aws cli and docker in the instance.
+4. Pull the image uploaded to dockerhub shown above using
+	docker pull shriram2712/shriram-a1-q1:latestlatest: Pulling from shriram2712/shriram-a1-q1
+5. Now login to AWS ECR using the command
+	$(aws ecr get-login --no-include-email --region us-east-1)
+6. Tag the image using
+	docker tag 1d0a35233731 488599217855.dkr.ecr.us-east-1.amazonaws.com/shriram-a1-q1:latest
+7. Now push the image using
+	docker push 488599217855.dkr.ecr.us-east-1.amazonaws.com/shriram-a1-q1:latest
+
 
 RUNNING BASH ON NGINX CONTAINER
 1. Once the container is created, run the command
