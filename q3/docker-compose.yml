@@ -1,4 +1,7 @@
 version: '3'
+
+#Adding services web and redis
+#Setting the volume with source as app folder and target as /code in container
 services:
   web:
     build: ./app
