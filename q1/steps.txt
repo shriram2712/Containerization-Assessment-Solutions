@@ -1,0 +1,40 @@
+STEPS :
+
+BUILD AND RUN A DOCKER CONTAINER FOR NGINX 
+1. Create a Dockerfile and add the commands to install nginx
+2. Create the image using the command
+	docker build -t shriram-a1-q1:latest .
+3. After the image is created, build a container and map port 8080 to it
+	docker run -dit -p 8080:80 shriram-a1-q1:latest
+
+UPLOAD AN IMAGE TO DOCKER HUB
+1. In the console login to DockerHub
+2. Create a repository 
+3. In the terminal log in to docker
+4. Tag the image created in the last step as follows
+	docker tag 1d0a35233731 shriram2712/shriram-a1-q1:latest
+5. Push the image to DockerHub
+	docker push shriram2712/shriram-a1-q1:latest
+6. Now this image can be pulled and run as follows :
+	docker run -dit -p 8080:80 shriram/shriram-a1-q1
+   This will pull the latest image and run
+
+UPLOAD AN IMAGE TO GCR
+1. In the terminal, login to gcloud using the command
+	gcloud auth login
+   Set the project id
+2. Tag the image created using the following command
+	docker tag 1d0a35233731 asia.gcr.io/pe-training/shriram-q1-a1:latest
+   where asia.gcr.io is the host name, pe traiining is the project and shriram-q1-a1 is the image tag
+3. Push the image using the command
+	docker push asia.gcr.io/pe-training/shriram-q1-a1:latest
+4. Now this image can be pulled and run as follows :
+	docker run -dit -p 8080:80 asia.gcr.io/pe-training/shriram-q1-a1:latest
+
+RUNNING BASH ON NGINX CONTAINER
+1. Once the container is created, run the command
+	docker exec -it cranky_jang bash
+2. Now a terminal opens and you can install nano using the command
+	apt-get install nano
+
+
