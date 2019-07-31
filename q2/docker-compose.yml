@@ -1,4 +1,6 @@
 version: '3'
+
+#Add the web and redis services with the source directory for web as app folder
 services:
   web:
     build: ./app
