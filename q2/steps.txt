@@ -1,0 +1,11 @@
+STEPS
+
+1: Create a folder inside your working directory (Can work without creating a directory)
+2: Add the app.py file with the code to print the required output
+3: Add the requirements.txt and specify the dependencies to be installed
+4: Add the Dockerfile with the command to start the flask application.
+5: Now outside this directory add the docker-compose.yml file and add the services redis and webapp in it
+6: run the command
+	docker-compose up
+   This creates the containers specified in the docker-compose.yml file
+7: Navigate to the said route and refresh the page, and the counter will get updated on every refresh. But any changes to the app.py willnot 	be reflected directly. we need to stop the containers and rebuild
