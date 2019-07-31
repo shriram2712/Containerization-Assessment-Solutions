@@ -1,0 +1,19 @@
+STEPS :
+
+1. Create an image of nginx web server as shown in question 1 solution.
+2. Tag the image and upload it to GCR as shown in the same solution
+3. In your terminal, write the following command
+
+	 gcloud beta container --project "pe-training" clusters create "standard-cluster-1" --zone "us-central1-c" --no-enable-basic-auth --cluster-version "1.12.8-gke.10" --machine-type "n1-standard-1" --image-type "COS" --disk-type "pd-standard" --disk-size "100" --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "2" --enable-cloud-logging --enable-cloud-monitoring --enable-ip-alias --network "projects/pe-training/global/networks/default" --subnetwork "projects/pe-training/regions/us-central1/subnetworks/default" --default-max-pods-per-node "110" --addons HorizontalPodAutoscaling,HttpLoadBalancing --enable-autoupgrade --enable-autorepair
+
+This command creates a cluster with the name standard-cluster-1
+
+4. Click on the deploy button
+5. Choose the GCR repo where the tagged image from step 1 is uploaded.
+6. Click on Deploy.
+7. Now under workloads tab, you will find a workload created for the same, click on it
+8. In the deployment details, you can find the Actions option, click on it and select the Expose option
+9. Choose the cluster IP service and click on expose. This action can also completed by using YAML, the code for which is attched in the Readme of this folder
+10. Similarly expose NOdePort and LoadBalancer.
+11. You can now find the changes updated in the DEployment details.
+12. If we navigate to the external ip of the load balancer, we can see the code reflected as written in the Dockerfile
